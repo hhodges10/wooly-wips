@@ -41,7 +41,11 @@ export default function Card({ image, title, tag }: CardProps) {
         )}
       </div>
       <div className="px-4 flex flex-row justify-between items-center gap-1 mt-4">
-        <h2 className="text-xl font-semibold text-nowrap text-ellipsis overflow-hidden max-w-[68%]">
+        <h2
+          className={`text-xl font-semibold text-nowrap text-ellipsis overflow-hidden ${
+            tag ? 'max-w-[68%]' : 'max-w-full'
+          }`}
+        >
           {title}
         </h2>
         {tag && (

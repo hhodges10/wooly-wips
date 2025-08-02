@@ -12,9 +12,9 @@ export enum TagType {
 }
 
 enum TagColors {
-  primary = 'text-lilac bg-lilac-light',
+  primary = 'text-lilac-4 bg-lilac-1',
   secondary = 'text-mint bg-mint-light',
-  tertiary = 'text-pink bg-pink-light',
+  tertiary = 'text-pink-4 bg-pink-1',
 }
 
 export default function Tag({

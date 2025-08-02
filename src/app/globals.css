@@ -6,12 +6,23 @@
   --color-purple-white: #fdfdff;
   --color-green-light: #ebef9f;
   --color-green: #3e6e35;
-  --color-pink-light: #fdb6b7;
-  --color-pink: #991e41;
   --color-mint-light: #e1f4ed;
   --color-mint: #2c775c;
-  --color-lilac-light: #cbcbed;
-  --color-lilac: #2f2f89;
+
+  --color-pink-1: #fdb6b7;
+  --color-pink-2: #fc9c9f;
+  --color-pink-3: #fb888c;
+  --color-pink-4: #991e41;
+  --color-pink-5: #771833;
+  --color-pink-6: #66152c;
+
+  --color-lilac-1: #cbcbed;
+  --color-lilac-2: #b3b3e5;
+  --color-lilac-3: #a4a4e0;
+  --color-lilac-4: #2f2f89;
+  --color-lilac-5: #24246a;
+  --color-lilac-6: #1f1f5b;
+
   --font-lexend: 'Lexend', sans-serif;
   --font-zilla-slab: 'Zilla Slab', serif;
 }
