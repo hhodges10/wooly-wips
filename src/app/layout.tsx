@@ -1,15 +1,19 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Lexend, Zilla_Slab } from 'next/font/google';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const lexend = Lexend({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-lexend',
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const zillaSlab = Zilla_Slab({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-zilla-slab',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -25,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-wool`}
+        className={`${lexend.variable} ${zillaSlab.variable} antialiased h-screen bg-linear-to-br from-green-light/30 to-mint-light/50`}
       >
         {children}
       </body>

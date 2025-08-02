@@ -1,12 +1,11 @@
+import Button, { ButtonSize, ButtonVariant } from '@/_components/ui/button';
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import { fn } from 'storybook/test';
 
-import { UIButton as Button } from './UIButton';
-
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'Example/Button',
+  title: 'Components/Button',
   component: Button,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -26,30 +25,41 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    isPrimary: true,
     children: 'Button',
   },
 };
 
 export const Secondary: Story = {
   args: {
-    isPrimary: false,
+    variant: ButtonVariant.secondarySolid,
     children: 'Button',
   },
 };
 
 export const Large: Story = {
   args: {
-    isPrimary: true,
-    size: 'large',
+    size: ButtonSize.large,
     children: 'Button',
   },
 };
 
 export const Small: Story = {
   args: {
-    isPrimary: true,
-    size: 'small',
+    size: ButtonSize.small,
+    children: 'Button',
+  },
+};
+
+export const Ghost: Story = {
+  args: {
+    variant: ButtonVariant.primaryGhost,
+    children: 'Button',
+  },
+};
+
+export const SecondaryGhost: Story = {
+  args: {
+    variant: ButtonVariant.secondaryGhost,
     children: 'Button',
   },
 };
