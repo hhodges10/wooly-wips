@@ -1,4 +1,6 @@
 import Button, { ButtonSize, ButtonVariant } from '@/_components/ui/button';
+import { faFilter, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import { fn } from 'storybook/test';
@@ -129,5 +131,38 @@ export const GhostButtons: Story = {
   },
   args: {
     children: 'Button',
+  },
+};
+
+export const IconButtons: Story = {
+  render: (args) => {
+    return (
+      <>
+        <div className="flex flex-col mb-6">
+          <h2 className="text-xl">Solid Icon</h2>
+          <Button
+            variant={ButtonVariant.iconSolid}
+            className="self-start"
+            {...args}
+          >
+            <FontAwesomeIcon icon={faPlus} />
+            Add Something
+          </Button>
+        </div>
+        <div className="flex flex-col mb-6">
+          <h2 className="text-xl">Outline Icon</h2>
+          <Button
+            variant={ButtonVariant.iconOutline}
+            className="self-start"
+            {...args}
+          >
+            <FontAwesomeIcon icon={faFilter} className="h-3.5" />
+          </Button>
+        </div>
+      </>
+    );
+  },
+  args: {
+    children: '',
   },
 };

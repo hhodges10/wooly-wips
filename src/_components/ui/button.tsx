@@ -2,6 +2,7 @@ export interface ButtonProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   children: React.ReactNode;
+  className?: string;
   onClick?: () => void;
 }
 
@@ -10,6 +11,8 @@ export enum ButtonVariant {
   secondarySolid = 'solid-secondary',
   primaryGhost = 'ghost-primary',
   secondaryGhost = 'ghost-secondary',
+  iconSolid = 'icon-solid',
+  iconOutline = 'icon-outline',
 }
 
 export enum ButtonSize {
@@ -26,28 +29,37 @@ const buttonSizeClasses: Record<ButtonSize, string> = {
 
 const buttonTypeClasses: Record<ButtonVariant, string> = {
   [ButtonVariant.primarySolid]:
-    'bg-lilac-1 hover:bg-lilac-2 text-lilac-4 focus:outline-lilac-4',
+    'bg-lilac-1 text-lilac-4 hover:bg-lilac-2 active:bg-lilac-3',
   [ButtonVariant.secondarySolid]:
-    'bg-pink-1 hover:bg-pink-2 text-pink-4 focus:outline-pink-4',
+    'bg-pink-1 text-pink-4 hover:bg-pink-2 active:bg-pink-3',
   [ButtonVariant.primaryGhost]:
-    'bg-transparent border-2 border-lilac-4 text-lilac-4 hover:bg-lilac-4 hover:text-bone focus:outline-lilac-4 active:bg-lilac-5',
+    'bg-transparent border-2 border-lilac-4 text-lilac-4 hover:bg-lilac-1 active:bg-lilac-2',
   [ButtonVariant.secondaryGhost]:
-    'bg-transparent border-2 border-pink-4 text-pink-4 hover:bg-pink-4 hover:text-bone focus:outline-pink-4 active:bg-pink-5',
+    'bg-transparent border-2 border-pink-4 text-pink-4 hover:bg-pink-1 active:bg-pink-2',
+  [ButtonVariant.iconSolid]:
+    'bg-pink-1 text-pink-4 text-xs rounded-full px-3 py-2 hover:bg-pink-2 active:bg-pink-3',
+  [ButtonVariant.iconOutline]:
+    'bg-transparent text-xs border-2 border-transparent hover:border-text/60 active:bg-text/10 rounded-full px-3 py-2',
 };
 
+// TODO - refactor to split variants into separate components, e.g. IconButton, SolidButton, GhostButton
 export default function Button({
   variant = ButtonVariant.primarySolid,
   size = ButtonSize.medium,
   children,
+  className = '',
   onClick,
 }: ButtonProps) {
-  const sizeClasses = buttonSizeClasses[size] || buttonSizeClasses.medium;
+  const sizeClasses =
+    variant !== ButtonVariant.iconSolid && variant !== ButtonVariant.iconOutline
+      ? buttonSizeClasses[size] || buttonSizeClasses.medium
+      : '';
   const variantClasses =
     buttonTypeClasses[variant] || buttonTypeClasses[ButtonVariant.primarySolid];
   return (
     <button
       onClick={onClick}
-      className={`font-bold transition-colors duration-100 cursor-pointer focus:outline-2 focus:outline-offset-1
+      className={`font-bold cursor-pointer flex items-center justify-center gap-2 ${className}
         ${sizeClasses} ${variantClasses}`}
     >
       {children}

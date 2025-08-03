@@ -3,6 +3,7 @@ import Tag, { TagType } from './tag';
 
 export interface CardProps {
   image?: string | StaticImageData;
+  fallbackImage: string;
   title: string;
   tag?: TagData;
 }
@@ -13,10 +14,10 @@ export interface TagData {
   name: string;
 }
 
-export default function Card({ image, title, tag }: CardProps) {
+export default function Card({ image, fallbackImage, title, tag }: CardProps) {
   return (
     <div
-      className={`bg-bone rounded-lg max-w-xs w-full pb-6 shadow-lg hover:cursor-pointer transition-transform duration-200 hover:scale-[1.02]`}
+      className={`bg-bone rounded-lg w-xs pb-6 shadow-lg hover:cursor-pointer transition-transform duration-200 hover:scale-[1.02]`}
     >
       <div className="p-1.5 rounded-lg">
         {image ? (
@@ -31,7 +32,7 @@ export default function Card({ image, title, tag }: CardProps) {
         ) : (
           <div className="w-full h-64 bg-mint-light flex items-center justify-center">
             <Image
-              src="/wip.png"
+              src={fallbackImage}
               width={100}
               height={100}
               alt="No image available"

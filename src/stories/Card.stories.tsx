@@ -22,6 +22,14 @@ const meta = {
         defaultValue: { summary: 'undefined' },
       },
     },
+    fallbackImage: {
+      control: { type: 'text' },
+      description: 'The fallback image to display when no image is provided',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '/skein.png' },
+      },
+    },
     title: {
       control: { type: 'text' },
       description: 'The title of the card',
@@ -63,6 +71,7 @@ export const Cards: Story = {
   ),
   args: {
     image: knitting,
+    fallbackImage: '/yarnbasket.png',
     title: 'Sample Card Title',
   },
 };
@@ -83,6 +92,7 @@ export const LongTitleCard: Story = {
   ),
   args: {
     image: knitting,
+    fallbackImage: '/yarnbasket.png',
   },
 };
 
@@ -95,5 +105,6 @@ export const NoImageCard: Story = {
   args: {
     image: undefined,
     title: 'Card Without Image',
+    fallbackImage: '/yarnbasket.png',
   },
 };

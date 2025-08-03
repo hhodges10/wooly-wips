@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Lexend, Zilla_Slab } from 'next/font/google';
 import './globals.css';
+import Navbar from '@/_components/ui/navbar';
 
 const lexend = Lexend({
   subsets: ['latin'],
@@ -29,9 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lexend.variable} ${zillaSlab.variable} antialiased h-screen bg-linear-to-br from-green-light/30 to-mint-light/50`}
+        className={`${lexend.variable} ${zillaSlab.variable} antialiased h-screen bg-fixed bg-linear-to-br from-green-light/20 to-mint-light/30`}
       >
-        {children}
+        <Navbar />
+        <div className="pt-20">{children}</div>
       </body>
     </html>
   );
