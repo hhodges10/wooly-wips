@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Button, { ButtonVariant } from './button';
 
+const hoverUnderline =
+  'pb-1 bg-left-bottom bg-gradient-to-r from-text/60 to-text/60 bg-[length:0%_1.5px] bg-no-repeat group-hover:bg-[length:100%_1.5px] transition-all duration-500 ease-out';
+
 export default function Navbar() {
   const pathname = usePathname();
   const links = [
@@ -18,20 +21,26 @@ export default function Navbar() {
   ];
   return (
     <nav className="w-full bg-bone border-b-2 border-mint/40 px-8 py-4 fixed z-50 grid grid-cols-2 items-center">
-      <div className="flex items-center justify-start gap-8">
+      <div className="flex items-center justify-start gap-12">
         <Link href="/">
-          <h1 className="text-2xl">Wooly WIPs</h1>
+          <h1 className="text-3xl">Wooly WIPs</h1>
         </Link>
-        <div className="space-x-4">
+        <div className="space-x-8">
           {links.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className={`hover:bg-mint-light px-3 py-2 rounded-md font-medium ${
-                pathname === link.href ? 'bg-mint-light' : ''
-              }`}
+              className="group transition-all duration-300 ease-in-out text-lg font-medium"
             >
-              {link.name}
+              <span
+                className={`${
+                  pathname === link.href
+                    ? 'pb-1 bg-bottom bg-gradient-to-r from-text/60 to-text/60 bg-[length:100%_1.5px] bg-no-repeat'
+                    : hoverUnderline
+                }`}
+              >
+                {link.name}
+              </span>
             </Link>
           ))}
         </div>

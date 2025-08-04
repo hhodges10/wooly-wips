@@ -18,7 +18,7 @@ export default function CardGrid({
   cardData: CardData[];
 }) {
   return (
-    <div className="grid grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 justify-items-center md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-6 gap-y-8">
       {cardData.map((card) => (
         <Link key={card.id} href={`/${link}/${card.id}`}>
           <Card
