@@ -1,22 +1,26 @@
 'use server';
-import { CardData } from '@/_components/ui/cardGrid';
 import client from './mongodb';
+
+export interface ProjectData {
+  title: string;
+  image?: string;
+  tag?: string;
+  description?: string;
+}
 
 // refactor to take in parameters instead of using mock data
 // also add error handling & validation
-export async function addProject() {
-  const project: CardData = {
-    id: 'new-project-id',
-    title: 'New Project',
-    image: null,
-    tag: null,
-  };
-  client.db('woolywips').collection('projects').insertOne({
-    title: project.title,
-    image: project.image,
-    tag: project.tag,
-    createdAt: new Date(),
-  });
+export async function addProject(project: ProjectData) {
+  client
+    .db('woolywips')
+    .collection('projects')
+    .insertOne({
+      title: project.title,
+      image: project.image || '/knitting.png',
+      tag: project.tag,
+      createdAt: new Date(),
+      description: project.description,
+    });
 }
 
 // refactor to take in parameters for filtering, pagination, etc.

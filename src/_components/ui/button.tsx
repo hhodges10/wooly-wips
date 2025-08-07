@@ -4,6 +4,7 @@ export interface ButtonProps {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export enum ButtonVariant {
@@ -49,6 +50,7 @@ export default function Button({
   children,
   className = '',
   onClick,
+  type = 'button',
 }: ButtonProps) {
   const sizeClasses =
     variant !== ButtonVariant.iconSolid && variant !== ButtonVariant.iconOutline
@@ -58,6 +60,7 @@ export default function Button({
     buttonTypeClasses[variant] || buttonTypeClasses[ButtonVariant.primarySolid];
   return (
     <button
+      type={type}
       onClick={onClick}
       className={`font-bold cursor-pointer flex items-center justify-center gap-2 ${className}
         ${sizeClasses} ${variantClasses}`}
